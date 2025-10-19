@@ -1,3 +1,4 @@
+const { GoatWrapper } = require("fca-liane-utils");
 const { config } = global.GoatBot;
 const { client } = global;
 const { writeFileSync } = require("fs-extra");
@@ -108,35 +109,4 @@ const threadName = d.threadName || "Not found";
 			}
 			case "mode":
 			case "m":
-			case "-m": {
-				let isSetNoti = false;
-				let value;
-				let indexGetVal = 1;
-
-				if (args[1] == "noti") {
-					isSetNoti = true;
-					indexGetVal = 2;
-				}
-
-				if (args[indexGetVal] == "on")
-					value = true;
-				else if (args[indexGetVal] == "off")
-					value = false;
-
-				if (isSetNoti) {
-					config.hideNotiMessage.whiteListModeThread = !value;
-					message.reply(getLang(value ? "turnedOnNoti" : "turnedOffNoti"));
-				}
-				else {
-					config.whiteListModeThread.enable = value;
-					message.reply(getLang(value ? "turnedOn" : "turnedOff"));
-				}
-
-				writeFileSync(client.dirConfig, JSON.stringify(config, null, 2));
-				break;
-			}
-			default:
-				return message.reply(getLang("missingTIDAdd"));
-		}
-	}
-};
+			case 
